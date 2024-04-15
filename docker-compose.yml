@@ -1,0 +1,38 @@
+version: '3.7'
+
+services:
+  blog-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    container_name: blog-backend
+    image: blog-backend:0.0.1
+    command: ["echo", "Container is running!"]
+    networks:
+      - blog-net
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: '512M'
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+    tmpfs:
+      - /tmp
+    stdin_open: true
+    tty: true
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8081/health" ]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+    ports:
+      - "8082:8081"
+
+networks:
+  blog-net:
+    driver: bridge

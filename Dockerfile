@@ -5,7 +5,7 @@ FROM eclipse-temurin:21.0.2_13-jre
 WORKDIR /app
 
 # Копируем JAR-файл приложения в контейнер
-COPY build/libs/*.jar /app/app.jar
+COPY build/libs/app*.jar /app/app.jar
 
 # Определяем порт, который будет открыт в контейнере
 EXPOSE 8081

@@ -51,3 +51,6 @@ tasks.named('asciidoctor') {
 tasks.named("jar") {
 	enabled = false
 }
+tasks.named("bootJar") {
+	archiveBaseName = 'app'
+}

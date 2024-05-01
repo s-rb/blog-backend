@@ -5,11 +5,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    env_file:
-      - .env
+    env_file: .env
     container_name: blog-backend
-    image: blog-backend:0.0.1
-    command: ["echo", "Container is running!"]
+    image: blog-backend:latest
     networks:
       - blog-net
     deploy:
@@ -31,7 +29,7 @@ services:
       timeout: 10s
       retries: 3
     ports:
-      - "8082:8081"
+      - "8081:8081"
 
 networks:
   blog-net:

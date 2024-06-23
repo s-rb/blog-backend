@@ -40,7 +40,7 @@ services:
       - blog-net
     env_file: .env.test
     ports:
-      - 5433:5432
+      - "5433:5432"
     restart: unless-stopped
     logging:
       options:

@@ -13,7 +13,8 @@ In docker-compose, this is handled by the env_file or environment section.
 Docker-compose-test also starts its own database, an external database is provided for production and this container is missing.
 To use in testing, you need to:
 - set variables in the .env.test file
-- start with the command ```docker-compose -f docker-compose-test.yml up -d --force-recreate --build```
+- first you need to build application ```./gradlew clean build```
+- then start with the command ```docker-compose -f docker-compose-test.yml up -d --force-recreate --build```
 - check in the browser by calling the helloController - GET request at the address ```http://localhost:8081/hello or http://localhost:8081/hello?name=myname```
 - stop with the command ```docker-compose -f docker-compose-test.yml down```
 If you want to use docker-compose-prod without db container - you can execute
